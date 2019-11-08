@@ -14,10 +14,10 @@ namespace NewYearGift.Sweets.SweetsInGift
     {
         public TypeMarshmallow TypeMarshmallow { get; private set; }
 
-        public Marshmallow(string name, double weightSingleItemInGrams, double gramsOfSugarSingleItem,TypeMarshmallow typeMarshmallow):
+       /* public Marshmallow(string name, double weightSingleItemInGrams, double gramsOfSugarSingleItem,TypeMarshmallow typeMarshmallow):
             base(name, weightSingleItemInGrams, gramsOfSugarSingleItem)
         {
             TypeMarshmallow = typeMarshmallow;
-        }
+        }*/
     }
 }
