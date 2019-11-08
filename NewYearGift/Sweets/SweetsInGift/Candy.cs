@@ -13,6 +13,7 @@ namespace NewYearGift.Sweets.SweetsInGift
     sealed public class  Candy:Sweet
     {
         public TypeCandy TypeCandy { get; private set; }
+
         public Candy(string name, double weightSingleItemInGrams, double gramsOfSugarSingleItem, TypeCandy typeCandy):
             base(name, weightSingleItemInGrams, gramsOfSugarSingleItem)
         {

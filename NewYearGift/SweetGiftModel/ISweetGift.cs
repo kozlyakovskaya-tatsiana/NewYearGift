@@ -5,11 +5,9 @@ using System.Text;
 
 namespace NewYearGift.SweetGiftModel
 {
-    public interface ISweetGift
+    public interface ISweetGift:IEnumerable<Sweet>
     {
-        void AddSweets(Sweet sweet);
         void AddSweets(Sweet sweet, int numbserSweets);
-        void AddSweets(IEnumerable<Sweet> sweets);
         void AddSweets(params Sweet[] sweets);
         void RemoveAllSweets();
         double Weight { get; }//in Grams

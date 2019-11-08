@@ -13,6 +13,7 @@ namespace NewYearGift.Sweets.SweetsInGift
     sealed public class Waffle:Sweet
     {
         public TypeWaffle TypeWaffle { get; private set; }
+
         public Waffle (string name, double weightSingleItemInGrams, double gramsOfSugarSingleItem, TypeWaffle typeWaffle) :
            base(name, weightSingleItemInGrams, gramsOfSugarSingleItem)
         {
