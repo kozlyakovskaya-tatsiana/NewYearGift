@@ -4,12 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using NewYearGift.SweetGiftModel.SweetGiftComparers;
 
-namespace NewYearGift.SweetGiftModel
+namespace NewYearGift.SweetGiftModel.SweetGiftImplement
 {
-    public class SweetGift : ISweetGift
+    public class SweetGift : ISweetGift,ISweetGiftSort
     {
-        private List<Sweet> SweetsInGift;
+        public List<Sweet> SweetsInGift;
 
         public double Weight
         {
@@ -44,14 +45,12 @@ namespace NewYearGift.SweetGiftModel
 
         public void AddSweets(Sweet sweet, int numbserSweets)
         {
-            for (int i = 0; i < numbserSweets; i++) 
-                SweetsInGift.Add(sweet);
+            SweetsInGift.AddRange(Enumerable.Repeat(sweet, numbserSweets));
         }
 
         public void AddSweets(params Sweet[] sweets)
         {
             SweetsInGift.AddRange(sweets);
-
         }
         
         public void RemoveAllSweets()
@@ -68,6 +67,28 @@ namespace NewYearGift.SweetGiftModel
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public override string ToString()
+        { 
+            var sweets = SweetsInGift.Select(sw => sw.ToString());
+            return String.Join("\n", sweets) + String.Format("\nTotal weight {0:f2} grams\nTotal sugar = {1:f2} grams of sugar", Weight, GramsOfSugar);
+        }
+
+        public void Sort(SortCriterion sortCriterion)
+        {
+            switch (sortCriterion)
+            {
+                case SortCriterion.WeightSweet:
+                    SweetsInGift.Sort(new WeightSweetInGiftComparer());
+                    break;
+                case SortCriterion.SugarSweet:
+                    SweetsInGift.Sort(new SugarSweetInGiftComparer());
+                    break;
+                default:
+                    SweetsInGift.Sort(new NameSweetGiftComparer());
+                    break;
+            }
         }
     }
 }

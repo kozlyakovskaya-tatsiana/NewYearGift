@@ -1,9 +1,10 @@
 ﻿using System;
-using NewYearGift.SweetGiftModel;
 using NewYearGift.Sweets;
-using NewYearGift.Sweets.SweetsInGift;
 using System.Linq;
 using System.Collections.Generic;
+using NewYearGift.Sweets.SweetImplement;
+using NewYearGift.SweetGiftModel;
+using NewYearGift.SweetGiftModel.SweetGiftImplement;
 
 namespace NewYearGift
 {
@@ -11,17 +12,18 @@ namespace NewYearGift
     {
         static void Main(string[] args)
         {
-           /* SweetGift sweetGift = new SweetGift();
-            sweetGift.AddSweets(
-                new Candy("q", 12, 2, TypeCandy.Caramel),
-                new Waffle("affg", 58, 7, TypeWaffle.Chocolate),
-                new Marshmallow("fghj", 65, 20, TypeMarshmallow.Pink)
-                );
-            var list = new List<int>();
-            list.ToArray();
-            sweetGift.AddSweets(new List<Sweet>().ToArray());
-            foreach (var sweet in sweetGift) Console.WriteLine(sweet);
-            Console.WriteLine(sweetGift.GramsOfSugar);*/
+            SweetGift sweetGift = new SweetGift();
+            sweetGift.AddSweets(new Marshmallow(KindMarshmallow.Premium));
+            sweetGift.AddSweets(new Candy(KindCandy.Snickers), 2);
+            sweetGift.AddSweets(new Marshmallow(KindMarshmallow.Bobruisk));
+            sweetGift.AddSweets(new Candy(KindCandy.Alenka));
+            sweetGift.AddSweets(new Candy(KindCandy.Alenka));
+            sweetGift.AddSweets(new Candy(KindCandy.BeeMaya));
+            sweetGift.AddSweets(new Waffle(KindWaffle.Yashkino), 3);
+            Console.WriteLine(sweetGift);
+            sweetGift.Sort(SortCriterion.NameSweet);
+            Console.WriteLine("\n\n\n\n\n");
+            Console.WriteLine(sweetGift);
         }
     }
 }

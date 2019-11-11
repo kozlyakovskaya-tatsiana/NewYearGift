@@ -11,43 +11,21 @@ namespace NewYearGift.Sweets
         Sloduch,
         Vitba
     }
+
     public abstract class Sweet
     {
-        public string Name { get; protected set; }
+        public abstract string Name { get;  }
 
-        public Manufacturer Manufacturer { get; protected set; }
+        public abstract Manufacturer Manufacturer { get; }
 
-        public double WeightSingleItemInGrams { get; protected set; }
+        public abstract double WeightSingleItemInGrams { get; }
 
-        public double GramsOfSugarSingleItem { get; protected set;}
+        public abstract double GramsOfSugarSingleItem { get; }
 
-        public Sweet()
+        public override string ToString()
         {
+            return String.Format("{0,-20}{1,8:f2} grams {2,8:f2} grams of sugar Manufacturer: {3,-12} ", Name, WeightSingleItemInGrams, GramsOfSugarSingleItem,Manufacturer);
 
         }
-
-        protected void SetSweet(string name, Manufacturer manufacturer, double weightSingleItemInGrams, double gramsOfSugarSingleItem)
-        {
-            Name = name;
-            Manufacturer = manufacturer;
-            WeightSingleItemInGrams = weightSingleItemInGrams;
-            GramsOfSugarSingleItem = gramsOfSugarSingleItem;
-        }
-
-       /* public Sweet(string name, Manufacturer manufacturer, double weightSingleItemInGrams, double gramsOfSugarSingleItem)
-        {
-            Name = name;
-            Manufacturer = manufacturer;
-            WeightSingleItemInGrams = weightSingleItemInGrams;
-            GramsOfSugarSingleItem = gramsOfSugarSingleItem;
-        }*/
-
-       
-        
-       /* public override string ToString()
-        {
-            return String.Format("{0,-9}{1,8:f2} grams {2,8:f2} grams of sugar",Name, WeightSingleItemInGrams, GramsOfSugarSingleItem);
-
-        }*/
     }
 }
