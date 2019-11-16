@@ -17,7 +17,7 @@ namespace NewYearGift.Sweets.SweetImplement
         Chocolate,
         Nut
     }
-   sealed public class Waffle:Sweet
+    sealed public class Waffle : Sweet
     {
         public KindWaffle KindWaffle { get; private set; }
 
@@ -31,8 +31,11 @@ namespace NewYearGift.Sweets.SweetImplement
                         return FillingWaffle.Nut;
                     case KindWaffle.Yashkino:
                         return FillingWaffle.Chocolate;
-                    default:
+                    case KindWaffle.Victoria:
                         return FillingWaffle.Vanilia;
+                    default:
+                        throw new Exception("There is no such kind of waffle");
+
                 }
             }
         }
@@ -47,8 +50,10 @@ namespace NewYearGift.Sweets.SweetImplement
                         return "ViToSha";
                     case KindWaffle.Yashkino:
                         return "Yashkino waffles";
-                    default:
+                    case KindWaffle.Victoria:
                         return "VICTORIA";
+                    default:
+                        throw new Exception("There is no such kind of waffle");
                 }
             }
         }
@@ -63,8 +68,10 @@ namespace NewYearGift.Sweets.SweetImplement
                         return Manufacturer.Vitba;
                     case KindWaffle.Yashkino:
                         return Manufacturer.Sloduch;
-                    default:
+                    case KindWaffle.Victoria:
                         return Manufacturer.Spartak;
+                    default:
+                        throw new Exception("There is no such kind of waffle");
                 }
             }
         }
@@ -76,11 +83,13 @@ namespace NewYearGift.Sweets.SweetImplement
                 switch (KindWaffle)
                 {
                     case KindWaffle.Vitosha:
-                        return 145;
+                        return 145d;
                     case KindWaffle.Yashkino:
-                        return 200;
+                        return 200d;
+                    case KindWaffle.Victoria:
+                        return 100d;
                     default:
-                        return 100;
+                        throw new Exception("There is no such kind of waffle");
                 }
             }
         }
@@ -95,20 +104,22 @@ namespace NewYearGift.Sweets.SweetImplement
                         return 43.5;
                     case KindWaffle.Yashkino:
                         return 56.9;
-                    default:
+                    case KindWaffle.Victoria:
                         return 33.4;
+                    default:
+                        throw new Exception("There is no such kind of waffle");
                 }
             }
         }
 
-        public Waffle(KindWaffle kindWaffle):base()
+        public Waffle(KindWaffle kindWaffle)
         {
             KindWaffle = kindWaffle;
         }
 
         public override string ToString()
         {
-            return String.Format("{0,-17}","Waffle") + base.ToString() + String.Format("filling: {0}", FillingWaffle);
+            return String.Format("{0,-17}", "Waffle") + base.ToString() + String.Format("filling: {0}", FillingWaffle);
         }
     }
 }

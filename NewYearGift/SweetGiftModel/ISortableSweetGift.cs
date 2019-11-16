@@ -11,7 +11,7 @@ namespace NewYearGift.SweetGiftModel
         NameSweet
     }
 
-    public interface ISweetGiftSort
+    public interface ISortableSweetGift
     {
         void Sort(SortCriterion sortCriterion);
     }

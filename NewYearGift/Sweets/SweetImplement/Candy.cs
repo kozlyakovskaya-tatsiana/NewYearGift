@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NewYearGift.Sweets.SweetImplement
 {
-   public enum KindCandy
+    public enum KindCandy
     {
         Alenka,
         Snickers,
@@ -20,28 +20,30 @@ namespace NewYearGift.Sweets.SweetImplement
         Jelly
     }
 
-    sealed public class Candy :Sweet
+    sealed public class Candy : Sweet
     {
         public KindCandy KindCandy { get; private set; }
 
-        public FillingCandy FillingCandy 
+        public FillingCandy FillingCandy
         {
             get
             {
-                switch(KindCandy)
+                switch (KindCandy)
                 {
                     case KindCandy.Alenka:
-                        return (FillingCandy.Chocolate);
+                        return FillingCandy.Chocolate;
                     case KindCandy.BeeMaya:
-                        return (FillingCandy.Jelly);
+                        return FillingCandy.Jelly;
                     case KindCandy.Kapri:
-                        return (FillingCandy.Caramel);
+                        return FillingCandy.Caramel;
                     case KindCandy.Malibu:
-                        return (FillingCandy.Caramel);
+                        return FillingCandy.Caramel;
+                    case KindCandy.Snickers:
+                        return FillingCandy.Chocolate;
                     default:
-                        return (FillingCandy.Chocolate);
+                        throw new Exception("There is no such Candy");
                 }
-               
+
             }
         }
 
@@ -59,8 +61,10 @@ namespace NewYearGift.Sweets.SweetImplement
                         return "Kapri New";
                     case KindCandy.Malibu:
                         return "Malibuuu";
-                    default:
+                    case KindCandy.Snickers:
                         return "SNICKERS";
+                    default:
+                        throw new Exception("There is no such Candy");
                 }
             }
         }
@@ -79,8 +83,10 @@ namespace NewYearGift.Sweets.SweetImplement
                         return Manufacturer.Sloduch;
                     case KindCandy.Malibu:
                         return Manufacturer.Sloduch;
-                    default:
+                    case KindCandy.Snickers:
                         return Manufacturer.Spartak;
+                    default:
+                        throw new Exception("There is no such Candy");
                 }
             }
         }
@@ -92,15 +98,17 @@ namespace NewYearGift.Sweets.SweetImplement
                 switch (KindCandy)
                 {
                     case KindCandy.Alenka:
-                        return 95;
+                        return 95d;
                     case KindCandy.BeeMaya:
                         return 15.6;
                     case KindCandy.Kapri:
                         return 12.7;
                     case KindCandy.Malibu:
                         return 11.9;
+                    case KindCandy.Snickers:
+                        return 85d;
                     default:
-                        return 85;
+                        throw new Exception("There is no such Candy");
                 }
             }
         }
@@ -119,13 +127,15 @@ namespace NewYearGift.Sweets.SweetImplement
                         return 6.8;
                     case KindCandy.Malibu:
                         return 7.2;
-                    default:
+                    case KindCandy.Snickers:
                         return 31.3;
+                    default:
+                        throw new Exception("There is no such Candy");
                 }
             }
         }
 
-        public Candy(KindCandy kindCandy):base()
+        public Candy(KindCandy kindCandy)
         {
             KindCandy = kindCandy;
         }

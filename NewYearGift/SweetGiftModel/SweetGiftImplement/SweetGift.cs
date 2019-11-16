@@ -4,13 +4,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using NewYearGift.SweetGiftModel.SweetGiftComparers;
+using NewYearGift.SweetGiftModel;
 
 namespace NewYearGift.SweetGiftModel.SweetGiftImplement
 {
-    public class SweetGift : ISweetGift,ISweetGiftSort
+    public sealed class SweetGift : ISweetGift, ISortableSweetGift
     {
-        public List<Sweet> SweetsInGift;
+        private List<Sweet> SweetsInGift;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return SweetsInGift.Count == 0;
+            }
+        }
 
         public double Weight
         {
@@ -19,7 +27,7 @@ namespace NewYearGift.SweetGiftModel.SweetGiftImplement
                 return SweetsInGift.Sum(u => u.WeightSingleItemInGrams);
             }
         }
-        
+
         public double GramsOfSugar
         {
             get
@@ -35,24 +43,22 @@ namespace NewYearGift.SweetGiftModel.SweetGiftImplement
 
         public SweetGift(IEnumerable<Sweet> sweets)
         {
+            if (sweets == null) throw new Exception("The collection of sweets does not references to anything");
             SweetsInGift = new List<Sweet>(sweets);
-        }
-
-        public void AddSweets(Sweet sweet)
-        {
-            SweetsInGift.Add(sweet);
         }
 
         public void AddSweets(Sweet sweet, int numbserSweets)
         {
+            if (sweet == null) throw new Exception("The sweet does not references to anything");
             SweetsInGift.AddRange(Enumerable.Repeat(sweet, numbserSweets));
         }
 
         public void AddSweets(params Sweet[] sweets)
         {
+            if (sweets == null) throw new Exception("The collection of sweets does not references to anything");
             SweetsInGift.AddRange(sweets);
         }
-        
+
         public void RemoveAllSweets()
         {
             SweetsInGift.Clear();
@@ -69,26 +75,34 @@ namespace NewYearGift.SweetGiftModel.SweetGiftImplement
             return GetEnumerator();
         }
 
-        public override string ToString()
-        { 
-            var sweets = SweetsInGift.Select(sw => sw.ToString());
-            return String.Join("\n", sweets) + String.Format("\nTotal weight {0:f2} grams\nTotal sugar = {1:f2} grams of sugar", Weight, GramsOfSugar);
-        }
-
         public void Sort(SortCriterion sortCriterion)
         {
             switch (sortCriterion)
             {
                 case SortCriterion.WeightSweet:
-                    SweetsInGift.Sort(new WeightSweetInGiftComparer());
+                    SweetsInGift.Sort((x, y) => x.WeightSingleItemInGrams.CompareTo(y.WeightSingleItemInGrams));
                     break;
                 case SortCriterion.SugarSweet:
-                    SweetsInGift.Sort(new SugarSweetInGiftComparer());
+                    SweetsInGift.Sort((x, y) => x.GramsOfSugarSingleItem.CompareTo(y.GramsOfSugarSingleItem));
+                    break;
+                case SortCriterion.NameSweet:
+                    SweetsInGift.Sort((x, y) => x.Name.CompareTo(y.Name));
                     break;
                 default:
-                    SweetsInGift.Sort(new NameSweetGiftComparer());
-                    break;
+                    throw new Exception("This criterion is not available");
             }
+        }
+
+        public List<Sweet> SearchSweetBySugar(double leftLimit, double rightLimit)
+        {
+            return SweetsInGift.Where(sw => sw.GramsOfSugarSingleItem >= leftLimit && sw.GramsOfSugarSingleItem <= rightLimit).ToList();
+        }
+
+        public override string ToString()
+        {
+            if (this.IsEmpty) return "The gift is empty";
+            var sweets = SweetsInGift.Select(sw => sw.ToString());
+            return String.Join("\n", sweets) + String.Format("\nTotal weight {0:f2} grams\nTotal sugar = {1:f2} grams of sugar", Weight, GramsOfSugar);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace NewYearGift.Sweets.SweetImplement
         InChocolate
     }
 
-    sealed public class Marshmallow:Sweet
+    sealed public class Marshmallow : Sweet
     {
         public KindMarshmallow KindMarshmallow { get; private set; }
 
@@ -34,8 +34,10 @@ namespace NewYearGift.Sweets.SweetImplement
                         return FillingMarshmallow.Pink;
                     case KindMarshmallow.Premium:
                         return FillingMarshmallow.InChocolate;
-                    default:
+                    case KindMarshmallow.Zeffa:
                         return FillingMarshmallow.Pink;
+                    default:
+                        throw new Exception("There is no such kind of marshmallow");
                 }
             }
         }
@@ -52,8 +54,10 @@ namespace NewYearGift.Sweets.SweetImplement
                         return "Light zef";
                     case KindMarshmallow.Premium:
                         return "Premium Zef";
-                    default:
+                    case KindMarshmallow.Zeffa:
                         return "ZeFFa";
+                    default:
+                        throw new Exception("There is no such kind of marshmallow");
                 }
             }
         }
@@ -70,8 +74,10 @@ namespace NewYearGift.Sweets.SweetImplement
                         return Manufacturer.Spartak;
                     case KindMarshmallow.Premium:
                         return Manufacturer.Kommunarka;
-                    default:
+                    case KindMarshmallow.Zeffa:
                         return Manufacturer.Vitba;
+                    default:
+                        throw new Exception("There is no such kind of marshmallow");
                 }
             }
         }
@@ -83,13 +89,15 @@ namespace NewYearGift.Sweets.SweetImplement
                 switch (KindMarshmallow)
                 {
                     case KindMarshmallow.Bobruisk:
-                        return 150;
+                        return 150d;
                     case KindMarshmallow.Light:
-                        return 125;
+                        return 125d;
                     case KindMarshmallow.Premium:
-                        return 195;
+                        return 195d;
+                    case KindMarshmallow.Zeffa:
+                        return 170d;
                     default:
-                        return 170;
+                        throw new Exception("There is no such kind of marshmallow");
                 }
             }
         }
@@ -106,13 +114,15 @@ namespace NewYearGift.Sweets.SweetImplement
                         return 46.4;
                     case KindMarshmallow.Premium:
                         return 63.8;
-                    default:
+                    case KindMarshmallow.Zeffa:
                         return 57.9;
+                    default:
+                        throw new Exception("There is no such kind of marshmallow");
                 }
             }
         }
 
-        public Marshmallow(KindMarshmallow kindMarshmallow):base()
+        public Marshmallow(KindMarshmallow kindMarshmallow)
         {
             KindMarshmallow = kindMarshmallow;
         }

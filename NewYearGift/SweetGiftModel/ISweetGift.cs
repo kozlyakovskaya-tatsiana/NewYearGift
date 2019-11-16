@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NewYearGift.SweetGiftModel
 {
-    public interface ISweetGift:IEnumerable<Sweet>
+    public interface ISweetGift : IEnumerable<Sweet>
     {
         void AddSweets(Sweet sweet, int numbserSweets);
         void AddSweets(params Sweet[] sweets);
