@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NewYearGift.SweetGiftModel
+﻿namespace NewYearGift.SweetGiftModel
 {
     public enum SortCriterion
     {

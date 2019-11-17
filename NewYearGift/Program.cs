@@ -1,9 +1,5 @@
 ﻿using System;
-using NewYearGift.Sweets;
-using System.Linq;
-using System.Collections.Generic;
 using NewYearGift.Sweets.SweetImplement;
-using NewYearGift.SweetGiftModel;
 using NewYearGift.SweetGiftModel.SweetGiftImplement;
 using NewYearGift.WorkConsoleForSweetGift;
 
@@ -23,7 +19,6 @@ namespace NewYearGift
                 sweetGift.AddSweets(new Waffle(KindWaffle.Victoria));
                 sweetGift.AddSweets(new Waffle(KindWaffle.Yashkino), 3);
                 SweetGiftConsole.StartWorking(sweetGift);
-
             }
             catch (Exception ex)
             {
@@ -31,7 +26,7 @@ namespace NewYearGift
             }
             finally
             {
-                Console.WriteLine("Program have finished");
+                Console.WriteLine("Program has finished");
             }
         }
     }

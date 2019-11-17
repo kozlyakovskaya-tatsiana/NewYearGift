@@ -2,9 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
-using NewYearGift.SweetGiftModel;
 
 namespace NewYearGift.SweetGiftModel.SweetGiftImplement
 {
@@ -43,20 +41,20 @@ namespace NewYearGift.SweetGiftModel.SweetGiftImplement
 
         public SweetGift(IEnumerable<Sweet> sweets)
         {
-            if (sweets == null) throw new Exception("The collection of sweets does not references to anything");
-            SweetsInGift = new List<Sweet>(sweets);
+            if (sweets != null)
+                SweetsInGift = new List<Sweet>(sweets);
         }
 
         public void AddSweets(Sweet sweet, int numbserSweets)
         {
-            if (sweet == null) throw new Exception("The sweet does not references to anything");
-            SweetsInGift.AddRange(Enumerable.Repeat(sweet, numbserSweets));
+            if (sweet != null)
+                SweetsInGift.AddRange(Enumerable.Repeat(sweet, numbserSweets));
         }
 
         public void AddSweets(params Sweet[] sweets)
         {
-            if (sweets == null) throw new Exception("The collection of sweets does not references to anything");
-            SweetsInGift.AddRange(sweets);
+            if (sweets != null)
+                SweetsInGift.AddRange(sweets);
         }
 
         public void RemoveAllSweets()
@@ -66,8 +64,7 @@ namespace NewYearGift.SweetGiftModel.SweetGiftImplement
 
         public IEnumerator<Sweet> GetEnumerator()
         {
-            foreach (var sweet in SweetsInGift)
-                yield return sweet;
+            return SweetsInGift.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -104,5 +101,6 @@ namespace NewYearGift.SweetGiftModel.SweetGiftImplement
             var sweets = SweetsInGift.Select(sw => sw.ToString());
             return String.Join("\n", sweets) + String.Format("\nTotal weight {0:f2} grams\nTotal sugar = {1:f2} grams of sugar", Weight, GramsOfSugar);
         }
+
     }
 }

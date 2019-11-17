@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NewYearGift.Sweets.SweetImplement
 {
@@ -17,7 +15,7 @@ namespace NewYearGift.Sweets.SweetImplement
         Chocolate,
         Nut
     }
-    sealed public class Waffle : Sweet
+    public sealed class Waffle : Sweet
     {
         public KindWaffle KindWaffle { get; private set; }
 

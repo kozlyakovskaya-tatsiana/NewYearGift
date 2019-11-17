@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NewYearGift.Sweets
 {
@@ -25,7 +23,6 @@ namespace NewYearGift.Sweets
         public override string ToString()
         {
             return String.Format("{0,-20}{1,8:f2} grams {2,8:f2} grams of sugar Manufacturer: {3,-12} ", Name, WeightSingleItemInGrams, GramsOfSugarSingleItem, Manufacturer);
-
         }
     }
 }
