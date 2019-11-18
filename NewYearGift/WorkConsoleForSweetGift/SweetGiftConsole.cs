@@ -51,7 +51,7 @@ namespace NewYearGift.WorkConsoleForSweetGift
                         break;
                     case "5":
                         Console.WriteLine("Enter the left limit: ");
-                        if (!(double.TryParse(Console.ReadLine(), out double leftLimit)) || leftLimit<0)
+                        if (!(double.TryParse(Console.ReadLine(), out double leftLimit)) || leftLimit < 0)
                         {
                             Console.WriteLine("Incorrect input of the left limit");
                             Console.WriteLine("Press any key to continue");
@@ -59,14 +59,14 @@ namespace NewYearGift.WorkConsoleForSweetGift
                             break;
                         }
                         Console.WriteLine("Enter the right limit: ");
-                        if (!(double.TryParse(Console.ReadLine(), out double rightLimit)) || rightLimit<0)
+                        if (!(double.TryParse(Console.ReadLine(), out double rightLimit)) || rightLimit < 0)
                         {
                             Console.WriteLine("Incorrect input of the right limit");
                             Console.WriteLine("Press any key to continue");
                             Console.ReadKey();
                             break;
                         }
-                        if (leftLimit>rightLimit)
+                        if (leftLimit > rightLimit)
                         {
                             Console.WriteLine("Incorrect input. Left limit must be less or equals than right limit");
                             Console.WriteLine("Press any key to continue");
