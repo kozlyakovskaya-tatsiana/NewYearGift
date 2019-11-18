@@ -4,7 +4,7 @@ namespace NewYearGift.Sweets
 {
     public enum Manufacturer
     {
-        Spartak = 1,
+        Spartak,
         Kommunarka,
         Sloduch,
         Vitba

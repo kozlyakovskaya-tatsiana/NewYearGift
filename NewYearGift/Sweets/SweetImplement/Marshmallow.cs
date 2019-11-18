@@ -9,6 +9,7 @@ namespace NewYearGift.Sweets.SweetImplement
         Premium,
         Zeffa
     }
+
     public enum FillingMarshmallow
     {
         White,

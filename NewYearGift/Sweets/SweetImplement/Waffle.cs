@@ -15,6 +15,7 @@ namespace NewYearGift.Sweets.SweetImplement
         Chocolate,
         Nut
     }
+
     public sealed class Waffle : Sweet
     {
         public KindWaffle KindWaffle { get; private set; }
